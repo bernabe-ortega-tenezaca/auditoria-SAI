@@ -81,7 +81,7 @@ include('../../layout/admin/datos_session_user.php');
                                             </td>
                                             <td class="text-center">
                                                 <a href="../auditoria_proceso/create.php?id=<?php echo $id;?>&objetivo=<?php echo $objetivo;?>" class="btn btn-outline-primary btn-sm" title="Procesos"><i class="fa fa-tasks" aria-hidden="true"></i></a>
-                                                <a href="edit.php?id=<?php echo $id;?>" class="btn btn-outline-success btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
+                                                <a href="edit.php?id=<?php echo $id;?>&empleado=<?php echo $empleado?>" class="btn btn-outline-success btn-sm" title="Editar"><i class="fas fa-edit"></i></a>
                                                 <a href="delete.php?id=<?php echo $id;?>&empleado=<?php echo $empleado?>" class="btn btn-outline-danger btn-sm" title="Borrar"><i class="fas fa-trash-alt"></i></a>
                                             </td>
                                         </tr>

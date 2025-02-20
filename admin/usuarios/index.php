@@ -38,7 +38,7 @@
                                 <div class="table-responsive">
                                     <table id="listado" class="table table-bordered table-striped">
                                             <thead>
-                                            <tr>
+                                            <tr class="text-center" style="background-color: #007bff; color: #fff;">
                                                 <th>Nro</th>
                                                 <th>Apellidos</th>
                                                 <th>Nombres</th>
@@ -73,7 +73,7 @@
                                                     <td><?php echo $nombres;?></td>
                                                     <td><?php echo $correo;?></td>
                                                     <td><?php echo $tipo;?></td>
-                                                    <td><?php echo $creado;?></td>
+                                                    <td class="text-center"><?php echo $creado;?></td>
                                                     <td>
                                                         <div class="text-center">
                                                             <a href="edit.php?id=<?php echo $id;?>" class="btn btn-outline-success btn-sm" title="editar"><i class="fas fa-pen"></i></a>
