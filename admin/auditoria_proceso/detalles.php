@@ -58,7 +58,7 @@
                                 <thead>
                                 <tr>
                                     <th scope="col"><b>Funcionario</b></th>
-                                    <td><?php echo $nombres ." ". $apellidos . "<br/><small>" . $correo . "</small>";?></td>
+                                    <td><b><?php echo $nombres ." ". $apellidos . "</b><small>" . " - ". $correo . "</small>";?></td>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -198,13 +198,64 @@
 
 <?php include('../../layout/admin/footer.php') ?>
 
-<script>
-    new DataTable('#detalle', {
-        fixedColumns: true,
-        paging: false,
-        searching: false,
-        scrollCollapse: true,
-        scrollX: true,
-        scrollY: 300
-    });
-</script>
+
+    <script>
+        $(function(){
+            $("#detalle").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+                "paging": false,
+                "lengthChange": true,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"],
+                "language": {
+                    "emptyTable": "No hay datos disponibles en la tabla",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ registros",
+                    "infoEmpty": "Mostrando 0 a 0 de 0 registros",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Cargando...",
+                    "processing": "Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                    "buttons": {
+                        "copy": "Copiar",
+                        "colvis": "Visibilidad",
+                        "collection": "Colección",
+                        "colvisRestore": "Restaurar visibilidad",
+                        "copyKeys": "Presione ctrl o u2318 + C para copiar los datos de la tabla al portapapeles del sistema. <br \/> <br \/> Para cancelar, haga clic en este mensaje o presione escape.",
+                        "copySuccess": {
+                            "1": "Copiada 1 fila al portapapeles",
+                            "_": "Copiadas %ds fila al portapapeles"
+                        },
+                        "copyTitle": "Copiar al portapapeles",
+                        "csv": "CSV",
+                        "excel": "Excel",
+                        "pageLength": {
+                            "-1": "Mostrar todas las filas",
+                            "_": "Mostrar %d filas"
+                        },
+                        "pdf": "PDF",
+                        "print": "Imprimir",
+                        "renameState": "Cambiar nombre",
+                        "updateState": "Actualizar",
+                        "createState": "Crear Estado",
+                        "removeAllStates": "Remover Estados",
+                        "removeState": "Remover",
+                        "savedStates": "Estados Guardados",
+                        "stateRestore": "Estado %d"
+                    },
+                }
+            }).buttons().container().appendTo('#listado_wrapper .col-md-6:eq(0)');
+        });
+    </script>

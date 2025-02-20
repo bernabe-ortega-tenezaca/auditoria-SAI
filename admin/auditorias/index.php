@@ -73,7 +73,7 @@ include('../../layout/admin/datos_session_user.php');
                                             <td><?php echo $empleado;?></td>
                                             <td><?php echo $objetivo;?></td>
                                             <td><?php echo $alcance;?></td>
-                                            <td><?php echo $creado_at;?></td>
+                                            <td class="text-center"><?php echo $creado_at;?></td>
                                             <td class="text-center">
                                                 <a href="../auditoria_proceso/detalles.php?id=<?php echo $id;?>" class="btn btn-outline-primary btn-sm" title="Ver">
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
