@@ -7,9 +7,19 @@
     $sentencia = $PDO->prepare('DELETE FROM usuario WHERE id = :id');
     $sentencia->bindParam(':id', $id);
 
-    if ($sentencia->execute()) {
-        echo "<script>alert('Usuario eliminado exitosamente')</script>";
-        header("location: ".$URL."/admin/usuarios/");
-    }else {
-        echo "<script>alert('Error al eliminar el usuario')</script>";
+    session_start();
+    try {
+        if ($sentencia->execute()) {
+            $_SESSION['msg'] = "Usuario eliminado exitosamente";
+            $_SESSION['icon'] = 'success';
+
+        }else {
+            $_SESSION['msg'] = "Error al eliminar el usuario";
+            $_SESSION['msg'] = "error";
+        }
+    }catch (Exception $e) {
+        $_SESSION['msg'] = "Error en la base de datos: " . $e->getMessage();
+        $_SESSION['icon'] = "warning";
     }
+
+    header("location: ".$URL."/admin/usuarios/");

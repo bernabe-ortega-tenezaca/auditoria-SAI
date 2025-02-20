@@ -9,18 +9,27 @@
     $alcance = $_POST['alcance'];
     $estado = "1";
 
-    $sentencia = $PDO->prepare("UPDATE auditoria_interna SET id_empleado = :id_empleado, objetivo = :objetivo, alcance = :alcance, estado = :estado WHERE id = :id");
+    session_start();
 
-    $sentencia->bindParam(':id',$id);
-    $sentencia->bindParam(':id_empleado',$id_empleado);
-    $sentencia->bindParam(':objetivo',$objetivo);
-    $sentencia->bindParam(':alcance',$alcance);
-    $sentencia->bindParam('estado',$estado);
+    try {
+        $sentencia = $PDO->prepare("UPDATE auditoria_interna SET id_empleado = :id_empleado, objetivo = :objetivo, alcance = :alcance, estado = :estado WHERE id = :id");
 
-    if ($sentencia->execute()) {
-        session_start();
-        header("location: ".$URL."/admin/auditorias/");
-        $_SESSION['msg'] = "Información actualizada exitosamente";
-    }else{
-        echo "<script>alert('Error al actualizar el usuario')</script>";
+        $sentencia->bindParam(':id',$id);
+        $sentencia->bindParam(':id_empleado',$id_empleado);
+        $sentencia->bindParam(':objetivo',$objetivo);
+        $sentencia->bindParam(':alcance',$alcance);
+        $sentencia->bindParam('estado',$estado);
+
+        if ($sentencia->execute()) {
+            $_SESSION['msg'] = "Información registrada exitosamente";
+            $_SESSION['icon'] = "success";
+        } else {
+            $_SESSION['msg'] = "Se ha producido un error";
+            $_SESSION['icon'] = "error";
+        }
+    } catch (PDOException $e) {
+        $_SESSION['msg'] = "Error en la base de datos: " . $e->getMessage();
+        $_SESSION['icon'] = "error";
     }
+
+header("location: ".$URL."/admin/auditorias/");

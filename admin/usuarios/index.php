@@ -22,12 +22,13 @@
                                 title: 'CACPE - SAI',
                                 text: '<?php echo $_SESSION['msg'];?>',
                                 showConfirmButton: false,
-                                timer: 1500
+                                timer: 1700
                             })
                          </script>
 
                         <?php
                                 unset($_SESSION['msg']);
+                                unset($_SESSION['icon']);
                             }
                         ?>
                         <br>
@@ -74,10 +75,10 @@
                                                     <td><?php echo $tipo;?></td>
                                                     <td><?php echo $creado;?></td>
                                                     <td>
-                                                        <centered>
-                                                            <a href="edit.php?id=<?php echo $id;?>" class="btn btn-success btn-sm">Editar<i class="fas fa-pen"></i></a>
-                                                            <a href="delete.php?id=<?php echo $id;?>" class="btn btn-danger btn-sm">Borrar<i class="fas fa-trash"></i></a>
-                                                        </centered>
+                                                        <div class="text-center">
+                                                            <a href="edit.php?id=<?php echo $id;?>" class="btn btn-outline-success btn-sm" title="editar"><i class="fas fa-pen"></i></a>
+                                                            <a href="delete.php?id=<?php echo $id;?>" class="btn btn-outline-danger btn-sm" title="borrar"><i class="fas fa-trash"></i></a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                                 <?php

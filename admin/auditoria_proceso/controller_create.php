@@ -18,31 +18,38 @@
     $entregables = $_POST['entregables'];
     $recursos = $_POST['recursos'];
 
-    $sentencia = $PDO->prepare("INSERT INTO auditoria_procesos 
+    session_start();
+    try {
+        $sentencia = $PDO->prepare("INSERT INTO auditoria_procesos 
                                       (noAuditoria, nivelCriticidad, importancia, expectativa, hallazgo, fUltimaAuditoria, reqNormativos, nivelRiesgo, actividadControl, fCorte, fInicio, fFin, entregables, recursos) 
                                       VALUES ( :noAuditoria,:nivelCriticidad,:importancia,:expectativa,:hallazgo,:fUltimaAuditoria,:reqNormativos,:nivelRiesgo,:actividadControl, :fCorte, :fInicio, :fFin, :entregables,:recursos)");
 
-    $sentencia->bindParam(':noAuditoria',$noAuditoria);
-    $sentencia->bindParam(':nivelCriticidad',$nivelCriticidad);
-    $sentencia->bindParam(':importancia',$importancia);
-    $sentencia->bindParam(':expectativa',$expectativa);
-    $sentencia->bindParam(':hallazgo',$hallazgo);
-    $sentencia->bindParam(':fUltimaAuditoria',$fUltimaAuditoria);
-    $sentencia->bindParam(':reqNormativos',$reqNormativos);
-    $sentencia->bindParam(':nivelRiesgo',$nivelRiesgo);
-    $sentencia->bindParam(':actividadControl',$actividadControl);
-    $sentencia->bindParam(':fCorte',$fCorte);
-    $sentencia->bindParam(':fInicio',$fInicio);
-    $sentencia->bindParam(':fFin',$fFin);
-    $sentencia->bindParam(':entregables',$entregables);
-    $sentencia->bindParam(':recursos',$recursos);
-    $sentencia->execute();
+        $sentencia->bindParam(':noAuditoria',$noAuditoria);
+        $sentencia->bindParam(':nivelCriticidad',$nivelCriticidad);
+        $sentencia->bindParam(':importancia',$importancia);
+        $sentencia->bindParam(':expectativa',$expectativa);
+        $sentencia->bindParam(':hallazgo',$hallazgo);
+        $sentencia->bindParam(':fUltimaAuditoria',$fUltimaAuditoria);
+        $sentencia->bindParam(':reqNormativos',$reqNormativos);
+        $sentencia->bindParam(':nivelRiesgo',$nivelRiesgo);
+        $sentencia->bindParam(':actividadControl',$actividadControl);
+        $sentencia->bindParam(':fCorte',$fCorte);
+        $sentencia->bindParam(':fInicio',$fInicio);
+        $sentencia->bindParam(':fFin',$fFin);
+        $sentencia->bindParam(':entregables',$entregables);
+        $sentencia->bindParam(':recursos',$recursos);
+        $sentencia->execute();
 
-    if ($sentencia->execute()) {
-        header("location:".$URL."/admin/auditorias/index.php");
-        session_start();
-        $_SESSION['msg'] = "Información registrada exitosamente";
-    }else{
-        session_start();
-        $_SESSION['msg'] = "Se ha producido un error";
+        if ($sentencia->execute()) {
+            $_SESSION['msg'] = "Información registrada exitosamente";
+            $_SESSION['icon'] = "success";
+        } else {
+            $_SESSION['msg'] = "Se ha producido un error";
+            $_SESSION['icon'] = "error";
+        }
+    } catch (PDOException $e) {
+        $_SESSION['msg'] = "Error en la base de datos: " . $e->getMessage();
+        $_SESSION['icon'] = "error";
     }
+
+    header("location: " . $URL . "/admin/procesos/index.php");

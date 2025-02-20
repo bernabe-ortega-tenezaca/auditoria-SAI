@@ -18,6 +18,7 @@
         $sentencia->bindParam(':objetivo',$objetivo);
         $sentencia->bindParam(':alcance',$alcance);
         $sentencia->bindParam(':abierto',$abierto);
+
         if ($sentencia->execute()) {
             $_SESSION['msg'] = "Información registrada exitosamente";
             $_SESSION['icon'] = "success";

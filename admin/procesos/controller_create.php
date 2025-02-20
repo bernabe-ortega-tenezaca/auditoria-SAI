@@ -9,19 +9,26 @@
     $area = $_POST['area'];
     $responsable = $_POST['responsable'];
 
-    $sentencia = $PDO->prepare("INSERT INTO proceso (codigo,tipo,linea,nombre,area,responsable) VALUES (:codigo,:tipo,:linea,:nombre,:area,:responsable)");
-    $sentencia->bindParam(':codigo',$codigo);
-    $sentencia->bindParam(':tipo',$tipo);
-    $sentencia->bindParam(':linea',$linea);
-    $sentencia->bindParam(':nombre',$nombre);
-    $sentencia->bindParam(':area',$area);
-    $sentencia->bindParam(':responsable',$responsable);
+    session_start();
+    try {
+        $sentencia = $PDO->prepare("INSERT INTO proceso (codigo,tipo,linea,nombre,area,responsable) VALUES (:codigo,:tipo,:linea,:nombre,:area,:responsable)");
+        $sentencia->bindParam(':codigo',$codigo);
+        $sentencia->bindParam(':tipo',$tipo);
+        $sentencia->bindParam(':linea',$linea);
+        $sentencia->bindParam(':nombre',$nombre);
+        $sentencia->bindParam(':area',$area);
+        $sentencia->bindParam(':responsable',$responsable);
 
-    if ($sentencia->execute()) {
-        header("location: ".$URL."/admin/procesos/index.php");
-        session_start();
-        $_SESSION['msg'] = "Información registrada exitosamente";
-    }else{
-        session_start();
-        $_SESSION['msg'] = "Se ha producido un error";
+        if ($sentencia->execute()) {
+            $_SESSION['msg'] = "Información registrada exitosamente";
+            $_SESSION['icon'] = "success";
+        }else{
+            $_SESSION['msg'] = "Se ha producido un error";
+            $_SESSION['icon'] = "error";
+        }
+    } catch (PDOException $e) {
+        $_SESSION['msg'] = "Error en la base de datos: ";
+        $_SESSION['icon'] = "warning";
     }
+    header("location: ".$URL."/admin/procesos/index.php");
+

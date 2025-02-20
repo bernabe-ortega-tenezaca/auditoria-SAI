@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Edicion de  usuarios</h1>
+                        <h1 class="m-0">Edición de usuarios</h1>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
 
@@ -42,6 +42,7 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
+                                        <input type="text" name="id_post" value="<?php echo $id_get?>" class="form-control" hidden>
                                         <label for="">Nombres</label>
                                         <input type="text" name="nombres" value="<?php echo $nombres?>" class="form-control" placeholder="Ingrese solo los nombres..." required>
                                     </div>
@@ -71,12 +72,6 @@
                                             <option value="gerente">Gerente</option>
                                             <option value="externo">Externo</option>
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <div class="form-group">
-                                        <label for="">Correo</label>
-                                        <input type="text" class="form-control" placeholder="Ingrese su correo" required>
                                     </div>
                                 </div>
                             </div>
