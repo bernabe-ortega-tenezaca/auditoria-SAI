@@ -78,10 +78,10 @@
                                             <td><?php echo $responsable;?></td>
                                             <td><?php echo $creado;?></td>
                                             <td>
-                                                <centered>
-                                                    <a href="edit.php?id=<?php echo $codigo;?>" class="btn btn-success btn-sm">Editar<i class="fas fa-pen"></i></a>
-                                                    <a href="delete.php?id<?php echo $codigo;?>" class="btn btn-danger btn-sm">Borrar<i class="fas fa-trash"></i></a>
-                                                </centered>
+                                                <div class="text-center">
+                                                    <a href="edit.php?id=<?php echo $codigo;?>" class="btn btn-outline-success btn-sm" title="Editar"><i class="fas fa-pen"></i></a>
+                                                    <a href="delete.php?id<?php echo $codigo;?>" class="btn btn-outline-danger btn-sm" title="Borrar"><i class="fas fa-trash"></i></a>
+                                                </div>
                                             </td>
                                         </tr>
                                         <?php
