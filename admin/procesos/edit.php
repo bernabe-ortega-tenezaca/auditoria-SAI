@@ -33,7 +33,7 @@
             </div><!-- /.row -->
 
             <div class="card">
-                <div class="card-header">
+                <div class="card-header" style="background-color: #8ec07c; color: white">
                     Llene la información detallada a continuación
                 </div>
                 <?php
