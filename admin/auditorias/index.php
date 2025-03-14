@@ -78,6 +78,9 @@ include('../../layout/admin/datos_session_user.php');
                                                 <a href="../auditoria_proceso/detalles.php?id=<?php echo $id;?>" class="btn btn-outline-primary btn-sm" title="Ver">
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                 </a>
+                                                <a href="../reportes/rpt_auditoria.php?id=<?php echo $id;?>" class="btn btn-outline-primary btn-sm" title="Reporte" target="_blank">
+                                                    <i class="fa fa-file-pdf" aria-hidden="true"></i>
+                                                </a>
                                             </td>
                                             <td class="text-center">
                                                 <a href="../auditoria_proceso/create.php?id=<?php echo $id;?>&objetivo=<?php echo $objetivo;?>" class="btn btn-outline-primary btn-sm" title="Procesos"><i class="fa fa-tasks" aria-hidden="true"></i></a>

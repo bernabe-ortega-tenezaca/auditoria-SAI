@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="#" class="brand-link">
         <img src="<?php echo $URL;?>/public/images/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
         <span class="brand-text font-weight-light">CACPE SAI</span>
     </a>
@@ -100,6 +100,35 @@
                             <a href="<?php echo $URL?>/admin/auditorias/create.php" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Nueva auditoria</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="../admin/" class="nav-link">
+                        <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Reportes
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="<?php echo $URL?>/admin/reportes/rpt_usuarios.php" class="nav-link" target="_blank">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>usuarios</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo $URL?>/admin/reportes/rpt_auditorias.php" class="nav-link" target="_blank">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Auditorias</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="<?php echo $URL?>/admin/reportes/rpt_procesos.php" class="nav-link" target="_blank">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Procesos</p>
                             </a>
                         </li>
                     </ul>

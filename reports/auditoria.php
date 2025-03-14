@@ -10,10 +10,10 @@
 
     // set document information
     $pdf->SetCreator(PDF_CREATOR);
-    $pdf->SetAuthor('<?php echo "BOT";?>');
-    $pdf->SetTitle('<?php echo "BOT-title";?>');
+    $pdf->SetAuthor('Marco Calle');
+    $pdf->SetTitle("Auditoria - SAI ");
     $pdf->SetSubject('Reporte');
-    $pdf->SetKeywords('Reporte, PDF, CACPE, test, desarrollando');
+    $pdf->SetKeywords('Reporte, CACPE, Uniandes, Auditoria');
 
     // set default header data
     $pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, PDF_HEADER_TITLE.' 001', PDF_HEADER_STRING, array(0,64,255), array(0,64,128));
@@ -52,7 +52,7 @@
     // dejavusans is a UTF-8 Unicode font, if you only need to
     // print standard ASCII chars, you can use core fonts like
     // helvetica or times to reduce file size.
-    $pdf->SetFont('dejavusans', '', 14, '', true);
+    $pdf->SetFont('Helvetica', '', 10, '', true);
 
     // Add a page
     // This method has several options, check the source code documentation for more information.
@@ -62,7 +62,13 @@
     $pdf->setTextShadow(array('enabled'=>true, 'depth_w'=>0.2, 'depth_h'=>0.2, 'color'=>array(196,196,196), 'opacity'=>1, 'blend_mode'=>'Normal'));
 
     // Set some content to print
-    $html = "<h1> Hola mundo </h1>";
+    $html = '
+        <div>
+            <p style="text-align: center">
+                <b>Auditoria realizada el: ".date("d/m/Y")."</b> 
+            </p>
+        </div>
+    ';
 
 
     // Print text using writeHTMLCell()
@@ -72,7 +78,7 @@
 
     // Close and output PDF document
     // This method has several options, check the source code documentation for more information.
-    $pdf->Output('example_001.pdf', 'I');
+    $pdf->Output('Informe.pdf', 'I');
 
     //============================================================+
     // END OF FILE

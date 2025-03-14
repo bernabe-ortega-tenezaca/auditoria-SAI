@@ -6,6 +6,7 @@
     include '../layout/admin/datos_session_user.php';
     include 'usuarios/controller_read.php';
     include 'auditorias/controller_read.php';
+    include 'auditoria_proceso/controller_read_p.php';
 ?>
 
 <?php include('../layout/admin/header.php') ?>
@@ -19,7 +20,7 @@
                 </div><!-- /.row -->
 
                 <div class="row">
-                    <div class="col-lg-6 col-6">
+                    <div class="col-lg-4 col-4">
                         <div class="small-box bg-warning">
                             <div class="inner">
                                 <h3><?=$total_usuarios;?></h3>
@@ -31,11 +32,23 @@
                             <a href="<?=$URL.'/admin/usuarios/index.php'?>" class="small-box-footer">Más información <i class="fas fa-arrow-circle-down"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-6">
+                    <div class="col-lg-4 col-4">
                         <div class="small-box bg-primary">
                             <div class="inner">
                                 <h3><?=$total_auditorias;?></h3>
                                 <p>Auditorias realizadas</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="<?=$URL.'/admin/auditorias/index.php'?>" class="small-box-footer">Más información <i class="fas fa-arrow-circle-down"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-4">
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3><?=$total_audit_procesos;?></h3>
+                                <p>Procesos de auditoria</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-stats-bars"></i>

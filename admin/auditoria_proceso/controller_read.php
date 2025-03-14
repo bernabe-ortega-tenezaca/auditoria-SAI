@@ -6,4 +6,4 @@
     $query->execute();
 
     $registros = $query->fetchAll(PDO::FETCH_ASSOC);
-    $total_auditorias = $query->rowCount();
+    $total_audit_procesos = $query->rowCount();
